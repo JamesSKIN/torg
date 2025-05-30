@@ -1,3 +1,5 @@
+import { Category } from './Category';
+
 export interface Task {
   id: string;
   title: string;
@@ -5,4 +7,5 @@ export interface Task {
   completed: boolean;
   dueDate?: string;
   createdAt: string;
+  category: Category;
 } 

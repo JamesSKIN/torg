@@ -1,54 +1,120 @@
-# React + TypeScript + Vite
+# Torg - Task Management Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Torg is a modern, user-friendly task management application built with React, TypeScript, and Vite. It provides an intuitive interface for organizing and tracking tasks with features like categorization, filtering, and detailed task views.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Task Management**
+  - Create, edit, and delete tasks
+  - Mark tasks as complete/incomplete
+  - Add detailed descriptions and due dates
+  - Automatic task categorization based on content
 
-## Expanding the ESLint configuration
+- **Smart Categorization**
+  - Automatic categorization of tasks into:
+    - Work
+    - Personal
+    - Health
+  - Intelligent keyword-based categorization
+  - Support for word variations and stems
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Task Organization**
+  - Filter tasks by category and status
+  - Sort tasks by due date
+  - Expandable task descriptions
+  - Detailed task view with all information
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **User Interface**
+  - Clean, modern design
+  - Responsive layout
+  - Intuitive navigation
+  - Modal-based task creation and editing
+  - Smooth animations and transitions
+
+- **Data Persistence**
+  - Local storage support
+  - Automatic data saving
+  - Persistent task state
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/torg.git
+   cd torg
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open your browser and navigate to:
+   ```
+   http://localhost:5175
+   ```
+
+## Project Structure
+
+```
+torg/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── context/        # React context providers
+│   ├── pages/          # Main application pages
+│   ├── types/          # TypeScript type definitions
+│   ├── utils/          # Utility functions
+│   ├── App.css         # Global styles
+│   ├── App.tsx         # Main application component
+│   └── main.tsx        # Application entry point
+├── public/             # Static assets
+├── index.html          # HTML template
+├── package.json        # Project dependencies
+├── tsconfig.json       # TypeScript configuration
+└── vite.config.ts      # Vite configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Technologies Used
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Frontend**
+  - React
+  - TypeScript
+  - Vite
+  - CSS Modules
+  - Local Storage API
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- **Development Tools**
+  - ESLint
+  - Prettier
+  - TypeScript
+  - npm
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Built with [Vite](https://vitejs.dev/)
+- Styled with modern CSS
+- Icons from [React Icons](https://react-icons.github.io/react-icons/)

@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { Task } from '../types/Task';
+import { categorizeTask } from '../utils/categorizeTask';
 
 interface TaskContextType {
   tasks: Task[];
-  addTask: (task: Omit<Task, 'id' | 'createdAt'>) => void;
+  addTask: (task: Omit<Task, 'id' | 'createdAt' | 'category'>) => void;
   toggleTask: (id: string) => void;
   deleteTask: (id: string) => void;
   editTask: (id: string, updatedTask: Partial<Task>) => void;
@@ -25,11 +26,12 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
   }, [tasks]);
 
-  const addTask = (taskData: Omit<Task, 'id' | 'createdAt'>) => {
+  const addTask = (taskData: Omit<Task, 'id' | 'createdAt' | 'category'>) => {
     const newTask: Task = {
       ...taskData,
       id: crypto.randomUUID(),
       createdAt: new Date().toISOString(),
+      category: categorizeTask(taskData as Task),
     };
     setTasks((prevTasks) => [...prevTasks, newTask]);
   };
@@ -49,7 +51,15 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const editTask = (id: string, updatedTask: Partial<Task>) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
-        task.id === id ? { ...task, ...updatedTask } : task
+        task.id === id 
+          ? { 
+              ...task, 
+              ...updatedTask,
+              category: updatedTask.title || updatedTask.description 
+                ? categorizeTask({ ...task, ...updatedTask })
+                : task.category
+            } 
+          : task
       )
     );
   };
